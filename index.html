@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>منصة A+ - تعليم واختبارات</title>
+
+  <!-- Tailwind CSS -->
+  <link href="package/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="webfonts/fontawesome-free-6.5.2-web/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/x-icon" href="logo.jpg">
+
+  <style>
+    /* الوضع الداكن لجميع النصوص مع الاستثناءات */
+    body.dark-theme {
+      background: linear-gradient(135deg, #1e1b4b, #3b1464);
+      color: #ffffff;
+      transition: all 0.3s ease;
+    }
+
+    /* نصوص الزجاجية تصبح بيضاء */
+    body.dark-theme .glass-effect {
+      background: rgba(30, 27, 75, 0.7);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #ffffff;
+    }
+
+    /* الهيدر */
+    body.dark-theme .header-bar {
+      background: linear-gradient(90deg, #3730a3, #5b21b6);
+    }
+
+    /* الأزرار */
+    body.dark-theme .btn-glow {
+      background: linear-gradient(to right, #9333ea, #3b82f6);
+      color: #fff;
+    }
+
+    /* استثناء الشعار A+ */
+    .logo-text {
+      color: initial !important;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* استثناء النوافذ المنبثقة */
+    .modal-overlay div {
+      color: initial !important;
+    }
+
+    /* استثناء الأيقونات */
+    body.dark-theme i {
+      color: initial !important;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center font-cairo p-4 transition-all duration-300">
+
+  <!-- الشريط العلوي -->
+<header   class="header-bar fixed top-0 left-0 right-0 z-50 py-3 px-6 flex justify-between items-center">
+  <div class="flex items-center space-x-2 space-x-reverse">
+<button id="aboutBtn" class="text-white hover:text-purple-200 transition-colors flex items-center gap-2">
+       <i class="fas fa-info-circle text-lg"></i> حول
+    </button>
+  </div>
+
+  <div class="flex items-center space-x-4 space-x-reverse">
+    <!-- Toggle Switch -->
+    <label class="switch">
+      <input type="checkbox" id="themeSwitch">
+      <span class="slider round"></span>
+    </label>
+    <!-- زر حول المنصة -->
+    
+  </div>
+</header>
+
+
+
+  <!-- المحتوى الرئيسي -->
+  <main class="content-container w-full max-w-4xl mt-20 mb-16">
+    <div class="glass-effect rounded-3xl p-6 md:p-10 shadow-2xl">
+
+      <!-- الشعار المركزي -->
+      <div class="flex flex-col items-center mb-10">
+        <div class="relative mb-6">
+          <div class="w-40 h-40 md:w-48 md:h-48 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center animate-bounce">
+            <div class="w-36 h-36 md:w-44 md:h-44 rounded-full bg-white flex items-center justify-center">
+              <span class="text-6xl md:text-7xl font-black bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent logo-text">A+</span>
+            </div>
+          </div>
+          <div class="absolute -top-2 -right-2 w-10 h-10 rounded-full bg-yellow-400 flex items-center justify-center shadow-lg">
+            <i class="fas fa-star text-white text-sm"></i>
+          </div>
+        </div>
+
+        <p class="text-xl md:text-2xl font-bold text-gray-800 mb-8">تعليم - اختبار - نجاح</p>
+        <p class="text-gray-700 text-center max-w-md mb-10 text-lg leading-relaxed">
+          منصة تعليمية متكاملة تساعدك على تحقيق التفوق الأكاديمي من خلال محتوى تعليمي متميز، اختبارات تقييمية، ومتابعة للتحصيل الدراسي.
+        </p>
+      </div>
+
+      <!-- المميزات -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div class="bg-white/70 dark:bg-purple-900/70 rounded-2xl p-5 text-center shadow-lg transform transition-transform hover:scale-105">
+          <div class="w-14 h-14 rounded-full bg-purple-100 dark:bg-purple-700 flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-graduation-cap text-purple-600 dark:text-purple-300 text-2xl"></i>
+          </div>
+          <h3 class="font-bold text-lg text-gray-800 mb-2">تعليم تفاعلي</h3>
+          <p class="text-gray-600 text-sm">دروس بأسلوب تفاعلي يجعل التعلم أكثر متعة وفعالية</p>
+        </div>
+
+        <div class="bg-white/70 dark:bg-blue-900/70 rounded-2xl p-5 text-center shadow-lg transform transition-transform hover:scale-105">
+          <div class="w-14 h-14 rounded-full bg-blue-100 dark:bg-blue-700 flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-clipboard-check text-blue-600 dark:text-blue-300 text-2xl"></i>
+          </div>
+          <h3 class="font-bold text-lg text-gray-800 mb-2">اختبارات ذكية</h3>
+          <p class="text-gray-600 text-sm">اختبارات تكيفية تقيس مستوى الفهم وتحدد نقاط القوة والضعف</p>
+        </div>
+
+        <div class="bg-white/70 dark:bg-green-900/70 rounded-2xl p-5 text-center shadow-lg transform transition-transform hover:scale-105">
+          <div class="w-14 h-14 rounded-full bg-green-100 dark:bg-green-700 flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-trophy text-green-600 dark:text-green-300 text-2xl"></i>
+          </div>
+          <h3 class="font-bold text-lg text-gray-800 mb-2">متابعة النجاح</h3>
+          <p class="text-gray-600 text-sm">تقارير أداء مفصلة تساعد على تحقيق أفضل النتائج الأكاديمية</p>
+        </div>
+      </div>
+
+      <!-- الأزرار -->
+      <div class="flex flex-col md:flex-row justify-center items-center gap-6 mb-8">
+        <a href="start.php" class="btn-glow w-full md:w-auto px-10 py-5 rounded-2xl flex items-center justify-center gap-3">
+          <i class="fas fa-play-circle text-xl"></i>
+          <span>ابدأ</span>
+        </a>
+
+    </div>
+  </main>
+
+  <!-- حقوق النشر -->
+<footer class="footer-bar">
+  جميع الحقوق محفوظة © 2025 | مطور بواسطة A+
+</footer>
+
+
+  <!-- نافذة منبثقة -->
+<div id="aboutModal" class="modal-overlay fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
+  <div class="modal-content">
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-2xl font-bold">حول منصة A+</h2>
+      <button id="closeModal" class="text-gray-500 hover:text-gray-700 text-2xl">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <p class="mb-4 leading-relaxed">
+      منصة A+ هي بيئة تعليمية متكاملة تهدف إلى مساعدة الطلاب على تحقيق التفوق الأكاديمي...
+    </p>
+    <div class="flex justify-center mt-6">
+      <button id="closeModalBtn" class="px-6 py-3 bg-gradient-to-r from-purple-500 to-blue-500 text-white font-bold rounded-xl hover:opacity-90 transition-opacity">
+        فهمت، شكراً!
+      </button>
+    </div>
+  </div>
+</div>
+
+
+  <!-- ملفات JS -->
+  <script src="theme.js" defer></script>
+  <script>
+    // السنة الحالية
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // النافذة المنبثقة
+    const aboutModal = document.getElementById('aboutModal');
+    const aboutBtn = document.getElementById('aboutBtn');
+    const infoBtn = document.getElementById('infoBtn');
+    const closeModal = document.getElementById('closeModal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+
+    function openModal() {
+      aboutModal.classList.remove('hidden');
+      setTimeout(() => {
+        aboutModal.querySelector('div').classList.remove('scale-95');
+        aboutModal.querySelector('div').classList.add('scale-100');
+      }, 10);
+    }
+
+    function closeModalFunc() {
+      const modalContent = aboutModal.querySelector('div');
+      modalContent.classList.remove('scale-100');
+      modalContent.classList.add('scale-95');
+      setTimeout(() => aboutModal.classList.add('hidden'), 300);
+    }
+
+    aboutBtn.addEventListener('click', e => { e.preventDefault(); openModal(); });
+    infoBtn.addEventListener('click', e => { e.preventDefault(); openModal(); });
+    closeModal.addEventListener('click', closeModalFunc);
+    closeModalBtn.addEventListener('click', closeModalFunc);
+    aboutModal.addEventListener('click', e => { if(e.target === aboutModal) closeModalFunc(); });
+  </script>
+</body>
+</html>

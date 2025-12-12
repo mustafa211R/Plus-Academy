@@ -1,0 +1,621 @@
+      /* إضافات خاصة بالصفحة الرئيسية */
+        .sidebar {
+            position: fixed;
+            right: -300px;
+            top: 0;
+            width: 280px;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: right 0.3s ease;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+            overflow-y: auto;
+            padding-top: 70px;
+        }
+        
+        body.dark-theme .sidebar {
+            background: rgba(30, 27, 75, 0.95);
+            border-left: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .sidebar.active {
+            right: 0;
+        }
+        
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+            display: none;
+        }
+        
+        .sidebar-overlay.active {
+            display: block;
+        }
+        
+        .profile-section {
+            text-align: center;
+            padding: 20px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        body.dark-theme .profile-section {
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .profile-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid #8b5cf6;
+            object-fit: cover;
+            margin: 0 auto 15px;
+        }
+        
+        .profile-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .profile-role {
+            font-size: 14px;
+            color: #6b7280;
+            background: #f3f4f6;
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+        
+        body.dark-theme .profile-role {
+            background: rgba(255,255,255,0.1);
+            color: #d1d5db;
+        }
+        
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            color: #4b5563;
+            text-decoration: none;
+            transition: all 0.3s;
+            border-right: 3px solid transparent;
+        }
+        
+        body.dark-theme .menu-item {
+            color: #d1d5db;
+        }
+        
+        .menu-item:hover, .menu-item.active {
+            background: rgba(139, 92, 246, 0.1);
+            color: #8b5cf6;
+            border-right: 3px solid #8b5cf6;
+        }
+        
+        .menu-item i {
+            width: 24px;
+            margin-left: 10px;
+            font-size: 18px;
+        }
+        
+        .main-content {
+            margin-right: 0;
+            transition: margin-right 0.3s ease;
+            padding: 20px;
+        }
+        
+        .main-content.sidebar-open {
+            margin-right: 280px;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content.sidebar-open {
+                margin-right: 0;
+            }
+            .sidebar {
+                width: 250px;
+            }
+        }
+        
+        /* كروت المحتوى */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .category-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        body.dark-theme .category-card {
+            background: rgba(30, 27, 75, 0.8);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .card-header {
+            padding: 25px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 32px;
+            color: white;
+        }
+        
+        .card-title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .card-desc {
+            color: #6b7280;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        body.dark-theme .card-desc {
+            color: #d1d5db;
+        }
+        
+        .card-stats {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 25px;
+            background: rgba(139, 92, 246, 0.05);
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        body.dark-theme .card-stats {
+            background: rgba(139, 92, 246, 0.1);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #8b5cf6;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #6b7280;
+        }
+        
+        /* تخصيص ألوان الكروت */
+        .card-courses .card-icon {
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+        }
+        
+        .card-challenges .card-icon {
+            background: linear-gradient(135deg, #ef4444, #f97316);
+        }
+        
+        .card-books .card-icon {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+        
+        .card-live .card-icon {
+            background: linear-gradient(135deg, #ec4899, #db2777);
+        }
+        
+        .card-tests .card-icon {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+        
+        .card-teachers .card-icon {
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+        }
+        
+        /* الهيدر المعدل */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .menu-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+        
+        .menu-btn:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .notification-badge {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .badge {
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            background: #ef4444;
+            color: white;
+            font-size: 10px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* قسم الترحيب */
+        .welcome-section {
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .welcome-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1%, transparent 20%);
+        }
+        
+        .welcome-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .welcome-subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+            position: relative;
+        }
+        
+        .progress-section {
+            margin: 30px 0;
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 15px;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: white;
+            border-radius: 5px;
+            width: 65%;
+            position: relative;
+            animation: progress-animation 2s ease-in-out;
+        }
+        
+        @keyframes progress-animation {
+            from { width: 0; }
+            to { width: 65%; }
+        }
+
+
+        /* قسم آخر النشاطات */
+.activity-section h2 {
+    color: #1f2937;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+body.dark-theme .activity-section h2 {
+    color: #f3f4f6;
+}
+
+.activity-container {
+    background: white;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+body.dark-theme .activity-container {
+    background: #1f2937;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* نشاط فردي */
+.activity-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+/* الألوان المختلفة للنشاطات في الوضع الفاتح */
+.activity-purple {
+    background: rgba(168, 85, 247, 0.1);
+    border: 1px solid rgba(168, 85, 247, 0.2);
+}
+
+.activity-blue {
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.activity-green {
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.activity-orange {
+    background: rgba(249, 115, 22, 0.1);
+    border: 1px solid rgba(249, 115, 22, 0.2);
+}
+
+.activity-red {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+/* الألوان المختلفة للنشاطات في الوضع الداكن */
+body.dark-theme .activity-purple {
+    background: rgba(168, 85, 247, 0.15);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+body.dark-theme .activity-blue {
+    background: rgba(59, 130, 246, 0.15);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+body.dark-theme .activity-green {
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+body.dark-theme .activity-orange {
+    background: rgba(249, 115, 22, 0.15);
+    border: 1px solid rgba(249, 115, 22, 0.3);
+}
+
+body.dark-theme .activity-red {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* أيقونة النشاط */
+.activity-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1rem;
+    flex-shrink: 0;
+}
+
+.activity-purple .activity-icon {
+    background: rgba(168, 85, 247, 0.2);
+    color: #8b5cf6;
+}
+
+.activity-blue .activity-icon {
+    background: rgba(59, 130, 246, 0.2);
+    color: #3b82f6;
+}
+
+.activity-green .activity-icon {
+    background: rgba(34, 197, 94, 0.2);
+    color: #10b981;
+}
+
+.activity-orange .activity-icon {
+    background: rgba(249, 115, 22, 0.2);
+    color: #f97316;
+}
+
+.activity-red .activity-icon {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+}
+
+body.dark-theme .activity-purple .activity-icon {
+    background: rgba(168, 85, 247, 0.3);
+    color: #a855f7;
+}
+
+body.dark-theme .activity-blue .activity-icon {
+    background: rgba(59, 130, 246, 0.3);
+    color: #60a5fa;
+}
+
+body.dark-theme .activity-green .activity-icon {
+    background: rgba(34, 197, 94, 0.3);
+    color: #34d399;
+}
+
+body.dark-theme .activity-orange .activity-icon {
+    background: rgba(249, 115, 22, 0.3);
+    color: #fb923c;
+}
+
+body.dark-theme .activity-red .activity-icon {
+    background: rgba(239, 68, 68, 0.3);
+    color: #f87171;
+}
+
+/* محتوى النشاط */
+.activity-content {
+    flex: 1;
+}
+
+.activity-title {
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.25rem;
+}
+
+body.dark-theme .activity-title {
+    color: #f9fafb;
+}
+
+.activity-desc {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+body.dark-theme .activity-desc {
+    color: #d1d5db;
+}
+
+/* العلامات والشارات */
+.activity-badge {
+    background: white;
+    color: #1f2937;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-right: 0.5rem;
+    border: 1px solid #e5e7eb;
+}
+
+body.dark-theme .activity-badge {
+    background: #374151;
+    color: #f3f4f6;
+    border: 1px solid #4b5563;
+}
+
+/* زر تحميل */
+.download-btn {
+    color: #3b82f6;
+    background: none;
+    border: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.3s;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.download-btn:hover {
+    color: #1d4ed8;
+    background: rgba(59, 130, 246, 0.1);
+}
+
+body.dark-theme .download-btn {
+    color: #60a5fa;
+}
+
+body.dark-theme .download-btn:hover {
+    color: #93c5fd;
+    background: rgba(59, 130, 246, 0.2);
+}
+
+/* النقطة المتحركة */
+.new-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10b981;
+    animation: pulse 2s infinite;
+    margin-right: 0.5rem;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* زر عرض المزيد */
+.view-all-btn {
+    color: #8b5cf6;
+    background: none;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.view-all-btn:hover {
+    color: #7c3aed;
+    background: rgba(139, 92, 246, 0.1);
+}
+
+body.dark-theme .view-all-btn {
+    color: #a855f7;
+}
+
+body.dark-theme .view-all-btn:hover {
+    color: #c4b5fd;
+    background: rgba(168, 85, 247, 0.2);
+}
+
+/* الفاصل بين النشاطات والقائمة */
+.activity-divider {
+    border-top: 1px solid #e5e7eb;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+}
+
+body.dark-theme .activity-divider {
+    border-top: 1px solid #374151;
+}
